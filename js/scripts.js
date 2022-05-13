@@ -90,31 +90,27 @@ $(function () {
 
 $("#classifyImage").submit(function (e) {
     e.preventDefault();
-    var url = $("#pasteImageUrlHere").val()
+    var image_url = $("#pasteImageUrlHere").val()
+    var form = new FormData();
+    form.append("image_url", image_url);
+    form.append("type", "all");
+    
     var settings = {
-        "url": "https://glcog.centralus.cloudapp.azure.com/meme/recognize/?image_url=" + url + "&type=all",
-        "method": "GET",
-        "dataType": "json",
-        "timeout": 0,
-        "headers": {
-            "x-api-key": "91b9953e-bc21-49bb-9981-2385df149057",
-            'Access-Control-Allow-Origin': '*',
-            "crossDomain":"true",
-        },
+      "url": "https://glcog.centralus.cloudapp.azure.com/meme/recognize",
+      "method": "POST",
+      "timeout": 0,
+      "headers": {
+        "x-api-key": "91b9953e-bc21-49bb-9981-2385df149057"
+      },
+      "processData": false,
+      "mimeType": "multipart/form-data",
+      "contentType": false,
+      "data": form
     };
+    
     $.ajax(settings).done(function (response) {
-        console.log(response);
+      console.log(response);
     });
-
-    var settings = {
-        "url": "https://glcog.centralus.cloudapp.azure.com/",
-        "method": "GET",
-        "timeout": 0,
-      };
-      
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-      });
 });
 
 
