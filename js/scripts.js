@@ -81,7 +81,7 @@ $("#classifyImage").submit(function (e) {
     e.preventDefault();
     var url = $("#pasteImageUrlHere").val()
     var settings = {
-        "url": "http://glcog.centralus.cloudapp.azure.com/meme/recognize?image_url="+url+"&type=all",
+        "url": "https://glcog.centralus.cloudapp.azure.com/meme/recognize?image_url="+url+"&type=all",
         "method": "GET",
         "timeout": 0,
         "headers": {
