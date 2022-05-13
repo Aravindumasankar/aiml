@@ -77,16 +77,31 @@ $(function () {
     renderJson();
 });
 
+
+
+
+
+
+
+
+
+
+
+var proxy = 'https://cors-anywhere.herokuapp.com/';
+
+
 $("#classifyImage").submit(function (e) {
     e.preventDefault();
     var url = $("#pasteImageUrlHere").val()
     var settings = {
-        "url": "https://glcog.centralus.cloudapp.azure.com/meme/recognize/?image_url=" + url + "&type=all",
+        "url": proxy+"https://glcog.centralus.cloudapp.azure.com/meme/recognize/?image_url=" + url + "&type=all",
         "method": "GET",
+        "dataType": "json",
         "timeout": 0,
         "headers": {
             "x-api-key": "91b9953e-bc21-49bb-9981-2385df149057",
-            "Access-Control-Allow-Origin": "*"
+            'Access-Control-Allow-Origin': '*',
+            "crossDomain":"true",
         },
     };
     $.ajax(settings).done(function (response) {
