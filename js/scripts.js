@@ -87,14 +87,12 @@ $(function () {
 
 
 
-var proxy = 'https://cors-anywhere.herokuapp.com/';
-
 
 $("#classifyImage").submit(function (e) {
     e.preventDefault();
     var url = $("#pasteImageUrlHere").val()
     var settings = {
-        "url": proxy+"https://glcog.centralus.cloudapp.azure.com/meme/recognize/?image_url=" + url + "&type=all",
+        "url": "https://glcog.centralus.cloudapp.azure.com/meme/recognize/?image_url=" + url + "&type=all",
         "method": "GET",
         "dataType": "json",
         "timeout": 0,
@@ -107,6 +105,16 @@ $("#classifyImage").submit(function (e) {
     $.ajax(settings).done(function (response) {
         console.log(response);
     });
+
+    var settings = {
+        "url": "https://glcog.centralus.cloudapp.azure.com/",
+        "method": "GET",
+        "timeout": 0,
+      };
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+      });
 });
 
 
