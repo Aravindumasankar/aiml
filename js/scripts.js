@@ -81,17 +81,14 @@ $("#classifyImage").submit(function (e) {
     e.preventDefault();
     var url = $("#pasteImageUrlHere").val()
     var settings = {
-        "url": "https://glcog.centralus.cloudapp.azure.com/meme/recognize?image_url="+url+"&type=all",
+        "url": "http://glcog.centralus.cloudapp.azure.com/meme/recognize?image_url=" + url + "&type=all",
         "method": "GET",
         "timeout": 0,
         "headers": {
             "x-api-key": "91b9953e-bc21-49bb-9981-2385df149057",
-            "Content-Type": "application/json",
-            "Accept": "*/*",
             "Access-Control-Allow-Origin": "*"
         },
     };
-    alert($("#pasteImageUrlHere").val())
     $.ajax(settings).done(function (response) {
         console.log(response);
     });
