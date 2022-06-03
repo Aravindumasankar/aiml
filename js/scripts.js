@@ -53,39 +53,26 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
-$(function () {
-    function renderJson() {
-        try {
-            var input = eval('(' + $('#json-input').val() + ')');
-        }
-        catch (error) {
-            return alert("Cannot eval JSON: " + error);
-        }
-        var options = {
-            collapsed: $('#collapsed').is(':checked'),
-            rootCollapsable: $('#root-collapsable').is(':checked'),
-            withQuotes: $('#with-quotes').is(':checked'),
-            withLinks: $('#with-links').is(':checked')
-        };
-        $('#json-renderer').jsonViewer(input, options);
-    }
-
-    // Generate on option change
+function renderJson(input) {
+    var options = {
+        collapsed: $('#collapsed').is(':checked'),
+        rootCollapsable: $('#root-collapsable').is(':checked'),
+        withQuotes: $('#with-quotes').is(':checked'),
+        withLinks: $('#with-links').is(':checked')
+    };
+    $('#json-renderer').jsonViewer(input, options);
     $('p.options input[type=checkbox]').click(renderJson);
+}
 
-    // Display JSON sample on page load
-    renderJson();
-});
+// $(function () {
+   
 
+//     // Generate on option change
+//     $('p.options input[type=checkbox]').click(renderJson);
 
-
-
-
-
-
-
-
-
+//     // Display JSON sample on page load
+//     renderJson();
+// });
 
 
 $("#classifyImage").submit(function (e) {
@@ -110,6 +97,7 @@ $("#classifyImage").submit(function (e) {
     
     $.ajax(settings).done(function (response) {
       console.log(response);
+      renderJson(JSON.parse(response))
     });
 });
 
