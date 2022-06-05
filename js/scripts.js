@@ -65,7 +65,7 @@ function renderJson(input) {
 }
 
 // $(function () {
-   
+
 
 //     // Generate on option change
 //     $('p.options input[type=checkbox]').click(renderJson);
@@ -81,23 +81,32 @@ $("#classifyImage").submit(function (e) {
     var form = new FormData();
     form.append("image_url", image_url);
     form.append("type", "all");
-    
+
     var settings = {
-      "url": "https://glcog.centralus.cloudapp.azure.com/meme/recognize",
-      "method": "POST",
-      "timeout": 0,
-      "headers": {
-        "x-api-key": "91b9953e-bc21-49bb-9981-2385df149057"
-      },
-      "processData": false,
-      "mimeType": "multipart/form-data",
-      "contentType": false,
-      "data": form
+        "url": "https://glcog.centralus.cloudapp.azure.com/meme/recognize",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "x-api-key": "91b9953e-bc21-49bb-9981-2385df149057"
+        },
+        "processData": false,
+        "mimeType": "multipart/form-data",
+        "contentType": false,
+        "data": form
     };
-    
+
     $.ajax(settings).done(function (response) {
-      console.log(response);
-      renderJson(JSON.parse(response))
+        response = JSON.parse(response)
+        console.log(response);
+        renderJson(response);
+        var preview_image = response.uploaded;
+        var processed_face_image = response.processed_filepath
+        var processed_object_image = response.object_detection[0].yolo.processed_image_url
+        $('#uploaded_img').attr("src", preview_image);
+        $('#processed_face_image').attr("src",processed_face_image );
+        $('#processed_objects_image').attr("src",processed_object_image );
+        
+
     });
 });
 

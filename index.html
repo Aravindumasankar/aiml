@@ -45,23 +45,27 @@
                             <div class="col-8">
                                 <input class="form-control" id="pasteImageUrlHere" type="text" required
                                     placeholder="Paste Image URL Here" />
-                                <!-- <img src="" id="uploaded_img" class="img-rounded .d-none" alt="Uploaded Image"> -->
+                                <div class="row"><h2 style="color: black;">ORIGINAL</h2></div>
+                                <img src="http://via.placeholder.com/640x360" id="uploaded_img" class="img-rounded .d-none col-12" alt="Uploaded Image"/>
+                                <div class="row"><h2 style="color: black;">FACES</h2></div>
+                                <img src="http://via.placeholder.com/640x360" id="processed_face_image" class="img-rounded .d-none col-12" alt="Processed Image"/>
+                                <div class="row"><h2 style="color: black;">OBJECTS</h2></div>
+                                <img src="http://via.placeholder.com/640x360" id="processed_objects_image" class="img-rounded .d-none col-12" alt="Processed Image"/>
                             </div>
                             <div class="col-4">
                                 <button class="btn btn-primary btn-lg " id="submitButton" type="submit">Submit</button>
                             </div>
                         </div>
-
                     </form>
                 </div>
                 <div class="col-8">
                     <p class="options text-black">
                         Options:
                         <label title="Generate node as collapsed">
-                            <input type="checkbox" id="collapsed" checked>Collapse nodes
+                            <input type="checkbox" id="collapsed" >Collapse nodes
                         </label>
                         <label title="Allow root element to be collasped">
-                            <input type="checkbox" id="root-collapsable" checked>Root collapsable
+                            <input type="checkbox" id="root-collapsable" >Root collapsable
                         </label>
                         <label title="Surround keys with quotes">
                             <input type="checkbox" id="with-quotes">Keys with quotes
