@@ -102,13 +102,14 @@ $("#classifyImage").submit(function (e) {
         var preview_image = response.uploaded;
         var processed_face_image = response.processed_filepath
         var processed_object_image = response.object_detection[0].yolo.processed_image_url
+        var processed_ocr_image = response.ocr[0].ocr.processed_image_url
+
         $('#uploaded_img').attr("src", preview_image);
         $('#processed_face_image').attr("src",processed_face_image );
         $('#processed_objects_image').attr("src",processed_object_image );
+        $('#processed_ocr_image').attr("src",processed_ocr_image );
         
 
     });
 });
-
-
 
